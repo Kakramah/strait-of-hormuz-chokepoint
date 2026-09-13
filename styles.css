@@ -1103,3 +1103,275 @@ body {
     padding: 1.75rem 1.25rem;
   }
 }
+
+/* ── أزرار تحميل التقرير التوثيقي الاستراتيجي (PDF Action Buttons) ── */
+.pdf-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-pill);
+  background: rgba(201, 165, 87, 0.12);
+  border: 1px solid rgba(201, 165, 87, 0.3);
+  color: var(--color-hero);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  min-height: 38px;
+}
+
+.pdf-nav-btn:hover {
+  background: var(--color-hero);
+  color: #060B12;
+  box-shadow: 0 4px 15px rgba(201, 165, 87, 0.35);
+  transform: translateY(-2px);
+}
+
+.hero-actions-row {
+  display: flex;
+  justify-content: center;
+  margin: 1.75rem 0 2.5rem;
+}
+
+.hero-pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--color-hero) 0%, #A88538 100%);
+  color: #060B14;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: 0 6px 20px rgba(201, 165, 87, 0.35);
+}
+
+.hero-pdf-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(201, 165, 87, 0.45);
+  background: linear-gradient(135deg, var(--color-hero-hover) 0%, #B89241 100%);
+}
+
+.print-document-header,
+.print-document-footer {
+  display: none;
+}
+
+/* ── هندسة الطباعة والأرشفة التوثيقية السيادية (@media print) ── */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 20mm 15mm;
+  }
+
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #111111 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background-color: #FFFFFF !important;
+    background-image: none !important;
+    color: #111111 !important;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  .noise-overlay,
+  .custom-halo,
+  .audio-toggle-btn,
+  .sovereign-header,
+  .pdf-nav-btn,
+  .hero-actions-row,
+  .map-legend,
+  .lightbox-overlay,
+  .glass-form-wrap,
+  .tail-section {
+    display: none !important;
+  }
+
+  /* ترويسة التوثيق الرسمية في بداية الوثيقة المطبوعة */
+  .print-document-header {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #C9A557;
+  }
+
+  .print-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .print-header-eagle {
+    width: 60px;
+    height: auto;
+  }
+
+  .print-header-title {
+    font-family: var(--font-heading);
+    font-size: 14pt;
+    font-weight: 700;
+    color: #111111 !important;
+  }
+
+  .print-header-sub {
+    font-size: 9pt;
+    color: #555555 !important;
+  }
+
+  .print-meta-box {
+    text-align: left;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    color: #333333 !important;
+  }
+
+  /* غلاف الوثيقة */
+  .hero-stage {
+    min-height: auto !important;
+    padding: 0 0 30px 0 !important;
+    background: none !important;
+  }
+
+  .hero-background-wrap {
+    display: none !important;
+  }
+
+  .hero-title {
+    font-size: 22pt !important;
+    color: #000000 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-title span {
+    color: #8C6D23 !important;
+  }
+
+  .hero-dek {
+    font-size: 11pt !important;
+    color: #222222 !important;
+    line-height: 1.7 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-telemetry {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin-top: 20px !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .telemetry-card {
+    border: 1px solid #CCCCCC !important;
+    background: #F9F9F9 !important;
+    padding: 12px !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .telemetry-value {
+    color: #8C6D23 !important;
+    font-size: 20pt !important;
+  }
+
+  .telemetry-label {
+    color: #111111 !important;
+    font-size: 10pt !important;
+  }
+
+  .telemetry-source {
+    color: #666666 !important;
+    font-size: 8pt !important;
+  }
+
+  /* الفصول السردية والتحليلية */
+  .narrative-chapter {
+    display: block !important;
+    margin-bottom: 30px !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .chapter-visual-frame {
+    margin-bottom: 15px;
+    max-height: 300px;
+    overflow: hidden;
+  }
+
+  .chapter-img {
+    filter: none !important;
+    max-height: 280px;
+    object-fit: cover;
+  }
+
+  .chapter-title {
+    font-size: 16pt !important;
+    color: #000000 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .chapter-text {
+    font-size: 10.5pt !important;
+    color: #222222 !important;
+    line-height: 1.65 !important;
+  }
+
+  .chapter-callout-quote {
+    border-right: 4px solid #C9A557 !important;
+    background: #F8F9FA !important;
+    padding: 12px 15px !important;
+    font-size: 10pt !important;
+    margin: 15px 0 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* الجداول والخرائط */
+  .interactive-map-section,
+  .impact-scenarios-section,
+  .alternatives-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 30px !important;
+    padding: 15px 0 !important;
+    background: none !important;
+    border: none !important;
+  }
+
+  .chokepoint-svg rect {
+    fill: #EFEFEF !important;
+  }
+
+  .chokepoint-svg path {
+    stroke: #333333 !important;
+  }
+
+  /* تذييل الوثيقة المطبوعة في نهاية كل صفحة */
+  .print-document-footer {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #CCCCCC;
+    padding-top: 10px;
+    margin-top: 40px;
+    font-size: 8.5pt;
+    color: #555555 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+

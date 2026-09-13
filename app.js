@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractiveMap();
   initWeb3Forms();
   initAmbientAudio();
+  initPdfDownload();
 });
 
 /* ── 1. الظهور التدريجي للعناصر مع التمرير (Reveal on Scroll) ── */
@@ -369,3 +370,24 @@ function initAmbientAudio() {
     }
   }
 }
+
+/* ── 8. تفعيل طباعة وتحميل التقرير الاستراتيجي بصيغة PDF ── */
+function initPdfDownload() {
+  const pdfButtons = [document.getElementById('navPdfBtn'), document.getElementById('heroPdfBtn')];
+  
+  pdfButtons.forEach(btn => {
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      // إغلاق أي نوافذ منبثقة أو وسائط نشطة قبل فتح نافذة الطباعة
+      const modal = document.getElementById('lightboxModal');
+      if (modal && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      // استدعاء نافذة الطباعة وحفظ الـ PDF التوثيقي
+      window.print();
+    });
+  });
+}
+
